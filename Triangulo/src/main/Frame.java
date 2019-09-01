@@ -29,7 +29,7 @@ public class Frame extends JFrame{
 	private JButton btnCalcular;
 	private final String NO_TRIANGULO = "No se puede formar un triangulo con los valores especificados.";
 	private final String NUMERICO_POSITIVO = "Los Valores de los lados deben ser númericos y positivos.";
-	private final String ISOCELES = "Trianulo Isoseles.";
+	private final String ISOSCELES = "Trianulo Isoseles.";
 	private final String EQUILATERO = "Trianulo Equilatero.";
 	private final String ESCALENO = "Trianulo Escaleno.";
 	
@@ -106,11 +106,11 @@ public class Frame extends JFrame{
 			return;
 		}
 		if(a.equals(b) && b.equals(c) ) {
-			setMensaje(ISOCELES);
+			setMensaje(EQUILATERO);
 			return;
 		}
-		if((a.equals(b) && ! b.equals(c)) || (a.equals(c) && !b.equals(c)) ) {
-			setMensaje(EQUILATERO);
+		if((a.equals(b) && ! b.equals(c)) || (a.equals(c) && !b.equals(c)) || b.equals(c) && !a.equals(c) ) {
+			setMensaje(ISOSCELES);
 			return;
 		}
 		setMensaje(ESCALENO);
