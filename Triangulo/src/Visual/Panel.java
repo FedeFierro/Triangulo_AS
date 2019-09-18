@@ -79,15 +79,15 @@ public class Panel extends JPanel {
         Double b;
         Double c;
         try {
-            a = Double.parseDouble(txtLadoA.getText());
+            a = Double.parseDouble(txtLadoA.getText()); 
             b = Double.parseDouble(txtLadoB.getText());
             c = Double.parseDouble(txtLadoC.getText());
-        } catch (Exception ex) {
+        } catch (NumberFormatException ex) {
             setMensaje(NUMERICO_POSITIVO);
             return;
         }
-        if (!sonPositivos(a, b, c)) {
-            setMensaje(NUMERICO_POSITIVO);
+        if (!sonPositivos(a, b, c)) { 
+            setMensaje(NUMERICO_POSITIVO); 
             return;
         }
 
@@ -113,13 +113,15 @@ public class Panel extends JPanel {
     }
 
     public String tipoTriangulo(double a, double b, double c) {
+        String resultado = null;
         if (a == b && b == c) {
-            return EQUILATERO;
+            resultado = EQUILATERO;
+        }else if ((a == b && b != c) || (a == c && b != c) || (b == c && a != c)) {
+            resultado = ISOSCELES;
+        }else{
+        resultado = ESCALENO;
         }
-        if ((a == b && b != c) || (a == c && b != c) || (b == c && a != c)) {
-            return ISOSCELES;
-        }
-        return ESCALENO;
+        return resultado;
     }
 
 }
